@@ -83,6 +83,15 @@ blockquote {
   h1 { font-size: $font-size-impact; }
 }
 
+.locust {
+  background-color: #165339;
+}
+
+.locust-ui {
+  height: 100%;
+  width: 100%;
+}
+
 .full {
   &, h1, h2 { color: $text-light; }
   &iframe {
