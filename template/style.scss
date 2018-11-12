@@ -87,7 +87,15 @@ blockquote {
   background-color: #165339;
 }
 
-.locust-ui {
+.plaid {
+  background-color: #BF0023;
+  vertical-align: middle;
+  text-align: center;
+  &, h1, h2 { color: $text-light; }
+  h1 { font-size: $font-size-impact; }
+}
+
+img.two-columns {
   height: 100%;
   width: 100%;
 }
