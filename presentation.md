@@ -4,7 +4,7 @@ layout: true
 
 <!-- This slide will serve as the base layout for all your slides -->
 .bottom-bar[
-  ![Plaid Logo](resource/plaid_logo_white.png)
+  ![Plaid Logo](https://algas.github.io/docker-meetup-tokyo-20181121/resource/plaid_logo_white.png)
 ]
 
 ---
@@ -100,7 +100,7 @@ class: two-columns
 
 .col-6[
 ## 構成図
-<img src="resource/locust_cluster.png" alt="locust-cluster" class="two-columns">
+<img src="https://algas.github.io/docker-meetup-tokyo-20181121/resource/locust_cluster.png" alt="locust-cluster" class="two-columns">
 ]
 
 .col-6[
@@ -151,6 +151,8 @@ Hatch rate の値が大きすぎてリクエストを投げることに失敗す
 - ローカルでもクラウドでもテスト実行環境が構築できます。
 
 ---
+
+class: plaid, full
 
 # 最後に宣伝
 
