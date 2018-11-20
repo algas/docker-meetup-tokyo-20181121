@@ -1,4 +1,4 @@
-title: Stress Test with Locust on k8s
+title: Stress Test with LOCUST on k8s
 class: animation-fade
 layout: true
 
@@ -23,9 +23,9 @@ class: impact
 山内 雅浩 [@algas](https://github.com/algas)
 
 - [LinuxKit で実現する新しい Docker 実行環境](https://tech.plaid.co.jp/linuxkit-tutorial/)
-- [【KUFU(現SmartHR)×プレイド】Tech Meetup ~Docker編~を開催しました！](https://tech.plaid.co.jp/kufu-docker-meetup/)
 - [Haskell on Docker で Portable CLI を作ろう](https://qiita.com/algas/items/fde155abbc9d8ae3f8c9)
 - [Whalebrew でコマンドパッケージを作ろう (GNU date を作ってみた)](https://qiita.com/algas/items/66aaf749dc3979e03a46)
+- [【KUFU(SmartHR)×プレイド】Tech Meetup ~Docker編~を開催しました！](https://tech.plaid.co.jp/kufu-docker-meetup/)
 
 ---
 
@@ -41,15 +41,24 @@ class: impact
 
 # 負荷テストについて
 
-## 負荷テスト (Stress Test)
-自社のWebサイトが大量のアクセスに耐えられるかどうかを確認するためのテスト
+負荷テスト=自社のWebサイトが大量のアクセスに耐えられることを確認するテスト
 
 --
 
 ## 負荷テストの何が難しいのか？
+--
+
 - 負荷をかける方にも十分な性能がないと適切な量の負荷をかけることができない
-- 複数台のインスタンスが連携してテスト先にアクセスできるのが望ましい
-- ネットワークやプロセス(ポート)がボトルネックになりやすい
+--
+
+- 1台だけでテストを実行するとネットワークやポートがボトルネックになりやすい
+--
+
+- 複数台から実行するにはテスト実行の同期や結果データの統合が必要になる
+
+--
+
+## → 負荷テストツールを使おう
 
 ---
 
@@ -81,15 +90,9 @@ https://github.com/algas/locust-example
 
 --
 
-## チュートリアル
---
-
-1. `./web`
---
-
+1. `git clone https://github.com/algas/locust-example.git`  
+1. `cd locust-example && ./web`
 1. `./locust -f locustfile.py --host http://host.docker.internal:8888`
---
-
 1. http://localhost:8089
 
 ---
@@ -102,6 +105,8 @@ class: two-columns
 ## 構成図
 <img src="https://algas.github.io/docker-meetup-tokyo-20181121/resource/locust_cluster.png" alt="locust-cluster" class="two-columns">
 ]
+
+--
 
 .col-6[
 ## 構築手順
@@ -123,6 +128,8 @@ class: two-columns
 <img src="https://docs.locust.io/en/stable/_images/webui-splash-screenshot.png" alt="locust-ui" class="two-columns">
 ]
 
+--
+
 .col-6[
 ## テストの実行
 1. Number of users to simulate
@@ -134,25 +141,34 @@ class: two-columns
 
 # LOCUSTの使用上の注意点
 
+--
+
 ## Number of users は徐々に大きくする
 
-自分の管理外のサーバに大量のリクエストを送るとDOS攻撃とみなされる可能性があります。
-アクセス先のサーバのログを見て正しく動作していることを確認してから少しずつ Number of users を大きくしましょう。
+管理外のサーバに大量のリクエストを送るとDOS攻撃とみなされる可能性があります。  
+ログを見て動作を確認してから少しずつ Number of users を大きくしましょう。
+
+--
 
 ## Hatch rate は小さく
 
-Hatch rate の値が大きすぎてリクエストを投げることに失敗することがあります。暖気は大切です！
+Hatch rate の値が大きいとリクエストを投げるのに失敗することがあります。  
+暖気は大切！
 
 ---
 
 # 発表のまとめ
 
-- LOCUSTを使えば簡単にWebサービスの負荷テストができます。
-- ローカルでもクラウドでもテスト実行環境が構築できます。
+- 負荷テストを実施する時はLOCUSTを使おう
+- LOCUSTを使えば簡単にWebサービスの負荷テストができる
+- ローカルでもクラウドでもテスト実行環境が構築できる
+
+今日の発表資料は以下で公開しています。  
+https://algas.github.io/docker-meetup-tokyo-20181121/presentation
 
 ---
 
-class: plaid, full
+class: impact
 
 # 最後に宣伝
 
@@ -164,4 +180,23 @@ https://plaid.co.jp/recruit/engineer.html
 
 # Appendix
 
-## 負荷テストツールの比較
+- 負荷テストツールの比較
+- 参考資料
+
+---
+
+# 負荷テストツールの比較
+
+- [JMeter](https://jmeter.apache.org/)
+    - PROS: プロトコルの種類が豊富で複数台からの実行にも対応している
+    - CONS: 古代のGUIでテストケースファイルがXML
+- [Apache Bench (ab)](https://httpd.apache.org/docs/2.4/programs/ab.html)
+    - PROS: コマンドラインベースのシンプルなツール
+    - CONS: GUIがなく複数台からのテスト実行には対応していない
+
+---
+
+# 参考資料
+
+- [LOCUST.io](https://locust.io/)
+- [Distributed Load Testing Using Kubernetes](https://github.com/GoogleCloudPlatform/distributed-load-testing-using-kubernetes)
