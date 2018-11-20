@@ -85,6 +85,7 @@ blockquote {
 
 .locust {
   background-color: #165339;
+  &, h1, h2 { color: $text-light; }
 }
 
 .plaid {

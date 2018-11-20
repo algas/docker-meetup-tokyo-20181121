@@ -64,7 +64,7 @@ class: impact
 
 class: locust
 
-# [LOCUST](https://locust.io) の紹介
+# LOCUSTの紹介
 
 ![LOCUST Logo](https://locust.io/static/img/logo.png)
 
@@ -80,6 +80,19 @@ class WebsiteUser(HttpLocust):
     task_set = UserBehavior
 
 ```
+
+---
+
+# LOCUSTの紹介
+
+## PROS
+- 複数台からテストを簡単に実行する仕組みが用意されている
+- Python を使ってテストケースを記述できる
+- レポート機能がある (Web/CSV)
+
+## CONS
+- レコーディング機能がない
+- HTTP(S) 以外のプロトコルに対応していない
 
 ---
 
@@ -110,7 +123,7 @@ class: two-columns
 
 .col-6[
 ## 構築手順
-1. kubernetes cloud を作成する
+1. kubernetes cluster を作成する
 1. master controller をデプロイする
 1. master service をデプロイする
 1. worker controller をデプロイする
