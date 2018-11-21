@@ -12,15 +12,15 @@ layout: true
 class: impact
 
 # {{title}}
-## PLAID Engineer / Hunter
-## 山内 雅浩 @algas
+## @algas
 
 ---
 
 # 自己紹介
 
 ## 株式会社プレイド
-山内 雅浩 [@algas](https://github.com/algas)
+Engineer / Hunter  
+山内 雅浩 ([@algas](https://github.com/algas))
 
 - [LinuxKit で実現する新しい Docker 実行環境](https://tech.plaid.co.jp/linuxkit-tutorial/)
 - [Haskell on Docker で Portable CLI を作ろう](https://qiita.com/algas/items/fde155abbc9d8ae3f8c9)
@@ -34,7 +34,7 @@ class: impact
 - 負荷テストについて
 - LOCUSTの紹介
 - ローカル環境でLOCUSTを動かす
-- クラウド環境(kubernetes)で LOCUST を動かす
+- クラウド環境でLOCUSTを動かす
 - LOCUSTの使用上の注意点
 
 ---
@@ -116,18 +116,20 @@ class: two-columns
 
 .col-6[
 ## 構成図
+[Distributed Load Testing Using Kubernetes](https://github.com/GoogleCloudPlatform/distributed-load-testing-using-kubernetes)
 <img src="https://algas.github.io/docker-meetup-tokyo-20181121/resource/locust_cluster.png" alt="locust-cluster" class="two-columns">
 ]
 
 --
 
 .col-6[
-## 構築手順
+## 構築・実行手順
 1. kubernetes cluster を作成する
 1. master controller をデプロイする
 1. master service をデプロイする
 1. worker controller をデプロイする
 1. (必要があれば) worker 台数を変更する
+1. テストを実行する
 ]
 
 ---
@@ -172,9 +174,9 @@ Hatch rate の値が大きいとリクエストを投げるのに失敗するこ
 
 # 発表のまとめ
 
-- 負荷テストを実施する時はLOCUSTを使おう
-- LOCUSTを使えば簡単にWebサービスの負荷テストができる
-- ローカルでもクラウドでもテスト実行環境が構築できる
+- 負荷テストではLOCUSTを使うと良さげ
+- LOCUSTは複数台でもテストの実行環境が構築できる
+- kubernetesで環境構築すれば簡単に台数調整ができる
 
 今日の発表資料は以下で公開しています。  
 https://algas.github.io/docker-meetup-tokyo-20181121/presentation
@@ -185,7 +187,8 @@ class: impact
 
 # 最後に宣伝
 
-## 株式会社プレイドでは一緒に未来を作ってくれるエンジニアを募集しています！
+## 株式会社プレイドでは一緒に未来を作ってくれる
+## エンジニアを募集しています！
 
 https://plaid.co.jp/recruit/engineer.html
 

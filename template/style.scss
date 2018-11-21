@@ -8,6 +8,7 @@ $light            : #FFF;
 $dark             : #333;
 $text-dark        : #212121;
 $text-light       : $light;
+$text-link        : #1616F8;
 $code-background  : #F8F8F8;
 $overlay          : transparentize(#000, .5);
 $font-size        : 28px;
@@ -38,7 +39,7 @@ pre, code {
   color: $secondary;
   background: $code-background;
 }
-a, a:visited, a:hover, a:active { color: $text-dark; }
+a, a:visited, a:hover, a:active { color: $text-link; }
 img { vertical-align: inherit; }
 blockquote {
   border-left: 8px solid;
@@ -79,6 +80,7 @@ blockquote {
   background-color: $primary;
   vertical-align: middle;
   text-align: center;
+  a, a:visited, a:hover, a:active { color: $text-light; }
   &, h1, h2 { color: $text-light; }
   h1 { font-size: $font-size-impact; }
 }
